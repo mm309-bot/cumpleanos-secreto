@@ -13,40 +13,36 @@
 body {
   margin: 0;
   min-height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #fff5f7;
   font-family: Georgia, serif;
   color: #3b2930;
 }
 
 .card {
-  width: min(90vw, 500px);
+  width: 90%;
+  max-width: 500px;
   padding: 45px 25px;
   background: white;
   border-radius: 28px;
   text-align: center;
-  box-shadow: 0 14px 45px rgba(80, 35, 50, 0.12);
+  box-shadow: 0 14px 45px rgba(80,35,50,.12);
 }
 
 .numbers {
   font-size: 42px;
   font-weight: bold;
   color: #a64d67;
-  margin-bottom: 25px;
-  letter-spacing: 6px;
-}
-
-.text {
-  font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 input {
+  display: block;
   width: 88%;
-  padding: 16px;
-  margin: 7px 0;
+  margin: 10px auto;
+  padding: 15px;
   border: 1px solid #dfc4cc;
   border-radius: 14px;
   font-size: 20px;
@@ -57,18 +53,12 @@ input {
 button {
   margin-top: 15px;
   padding: 14px 30px;
-  border: 0;
+  border: none;
   border-radius: 14px;
   background: #a64d67;
   color: white;
   font-size: 17px;
   cursor: pointer;
-}
-
-.error {
-  margin-top: 15px;
-  font-size: 16px;
-  color: #a64d67;
 }
 
 .final {
@@ -99,48 +89,21 @@ button {
     14 · 31 · 11
   </div>
 
-  <div class="text">
-    Hay tres números que esconden una fecha.<br>
-    Descubre qué representa cada uno.
-  </div>
+  <input id="dia" type="text" inputmode="numeric" placeholder="Día">
 
-  <input
-    id="dia"
-    type="text"
-    inputmode="numeric"
-    placeholder="Día"
-    autocomplete="off"
-  >
+  <input id="mes" type="text" inputmode="numeric" placeholder="Mes">
 
-  <input
-    id="mes"
-    type="text"
-    inputmode="numeric"
-    placeholder="Mes"
-    autocomplete="off"
-  >
+  <input id="ano" type="text" inputmode="numeric" placeholder="Año">
 
-  <input
-    id="ano"
-    type="text"
-    inputmode="numeric"
-    placeholder="Año"
-    autocomplete="off"
-  >
-
-  <br>
-
-  <button onclick="descubrir()">
+  <button id="descubrir">
     DESCUBRIR
   </button>
-
-  <div class="error" id="error"></div>
 
 </div>
 
 <script>
 
-function descubrir() {
+document.getElementById("descubrir").addEventListener("click", function() {
 
   const dia = document.getElementById("dia").value.trim();
   const mes = document.getElementById("mes").value.trim();
@@ -149,7 +112,6 @@ function descubrir() {
   if (dia === "14" && mes === "11" && ano === "2031") {
 
     document.getElementById("card").innerHTML = `
-
       <div class="final">
         💍<br>
         CÁSATE<br>
@@ -163,16 +125,11 @@ function descubrir() {
       <div class="sub">
         <i>No ahora. Algún día.</i> ❤️
       </div>
-
     `;
-
-  } else {
-
-    document.getElementById("error").textContent = "";
 
   }
 
-}
+});
 
 </script>
 
