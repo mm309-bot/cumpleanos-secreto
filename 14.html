@@ -6,13 +6,11 @@ input{width:88%;padding:16px;border:1px solid #dfc4cc;border-radius:14px;font-si
 button{margin-top:14px;padding:13px 30px;border:0;border-radius:14px;background:#a64d67;color:#fff;font-size:17px}
 .word{font-size:40px;font-weight:bold;color:#a64d67}
 .final{font-size:40px;line-height:1.15;font-weight:bold;color:#a64d67}
-.date{font-size:22px;margin-top:18px}
+.date{font-size:22px;margin-top:18px}.sub{font-size:18px;margin-top:14px}
 </style></head><body>
-<div class="card"><div class="number">14</div><input id="a" autocomplete="off" autocapitalize="none"><br><button onclick="go()">OK</button></div>
+<div class="card"><div class="number">14</div><input id="a" autocomplete="off" autocapitalize="none"><br><button id="b">OK</button></div>
 <script>
-function go(){
- let v=document.getElementById('a').value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
- if(v==='dia'){localStorage.setItem('ok14','1');document.body.innerHTML='<div class="card"><div class="word">ALGÚN</div></div>';}
-}
-document.getElementById('a').addEventListener('keydown',e=>{if(e.key==='Enter')go()});
+function n(s){return s.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function go(){let a=document.getElementById('a');if(n(a.value)==='dia'){document.querySelector('.card').innerHTML='<div class="word">QUIERO</div>'}else a.value=''}
+b.onclick=go;a.onkeydown=e=>{if(e.key==='Enter')go()}
 </script></body></html>
